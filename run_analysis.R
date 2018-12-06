@@ -42,3 +42,6 @@ full_dataset <- bind_rows(test_dataset, train_dataset)
 
 # selecting only the correct columns
 dataset <- full_dataset[,c(1, 3, grep('(std\\(\\)|mean\\(\\))', features) + 3)] %>% group_by(subjectId, activity) %>% summarise_all(mean)
+
+# exporting the data
+write.table(dataset, 'ex4.txt', row.names = FALSE)
